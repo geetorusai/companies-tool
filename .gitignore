@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.agents/skills/geetorus-create-plugin
+.agents/skills/geetorus
+.agents/skills/para-memory-files
+.agents/skills/geetorus-create-agent

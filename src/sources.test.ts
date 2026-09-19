@@ -1,0 +1,32 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { isGithubShorthand, normalizeSourceInput } from "./sources.js";
+
+test("normalizeSourceInput preserves github shorthand", () => {
+  assert.equal(
+    normalizeSourceInput("geetorusai/company-template"),
+    "geetorusai/company-template",
+  );
+});
+
+test("normalizeSourceInput preserves owner/repo/path github shorthand", () => {
+  assert.equal(
+    normalizeSourceInput("geetorusai/companies/gstack"),
+    "geetorusai/companies/gstack",
+  );
+});
+
+test("normalizeSourceInput keeps local paths intact", () => {
+  assert.equal(normalizeSourceInput("./fixtures/company"), "./fixtures/company");
+});
+
+test("isGithubShorthand accepts owner/repo and owner/repo/path", () => {
+  assert.equal(isGithubShorthand("geetorusai/company-template"), true);
+  assert.equal(isGithubShorthand("geetorusai/companies/gstack"), true);
+});
+
+test("isGithubShorthand rejects local-looking paths", () => {
+  assert.equal(isGithubShorthand("./fixtures/company"), false);
+  assert.equal(isGithubShorthand("/tmp/company"), false);
+  assert.equal(isGithubShorthand("C:\\temp\\company"), false);
+});

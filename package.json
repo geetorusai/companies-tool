@@ -1,0 +1,56 @@
+{
+  "name": "companies.sh",
+  "version": "2026.324.0-canary.0",
+  "description": "A skills-style CLI for importing Agent Companies into supported providers",
+  "type": "module",
+  "bin": {
+    "companies.sh": "./dist/index.js",
+    "companies": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "prepack": "pnpm build",
+    "test:docker": "./scripts/docker-smoke.sh",
+    "test:docker:npx": "./scripts/docker-npx-smoke.sh",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "tsx --test src/*.test.ts"
+  },
+  "keywords": [
+    "agent-companies",
+    "companies",
+    "geetorus",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geetorusai/companies-tool.git"
+  },
+  "homepage": "https://docs.geetorus.ing",
+  "bugs": {
+    "url": "https://github.com/geetorusai/companies-tool/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.4.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.1",
+    "commander": "^13.1.0",
+    "geetorusai": "^2026.325.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
